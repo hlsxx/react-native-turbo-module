@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # Define the library name here.
 project(appmodules)
 
@@ -11,3 +13,5 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE ../../../../../shared/NativeSampleM
 
 # Define where CMake can find the additional header files. We need to crawl back the jni, main, src, app, android folders
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ../../../../../shared)
+
+
