@@ -14,7 +14,7 @@ export default class App extends Component {
       <View style={{ flex: 1, justifyContent: 'center' }}>
         <Button
           title="Press"
-          onPress={reverseString}
+          onPress={() => NativeSampleModule.camera()}
         />
       </View>
     )

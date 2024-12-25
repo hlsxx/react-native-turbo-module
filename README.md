@@ -21,3 +21,6 @@ externalNativeBuild {
         arguments "-DOpenCV_DIR=" + "<path to downloaded opencv sdk>" + "/sdk/native/jni" // , "-DANDROID_ARM_NEON=TRUE"
     }
 }
+
+# Hints
+adb logcat | grep ReactNative (catch error from cpp logs)
