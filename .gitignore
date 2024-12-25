@@ -27,6 +27,7 @@ DerivedData
 # Android/IntelliJ
 #
 build/
+android/opencv
 .idea
 .gradle
 local.properties
