@@ -14,4 +14,8 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE ../../../../../shared/NativeSampleM
 # Define where CMake can find the additional header files. We need to crawl back the jni, main, src, app, android folders
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ../../../../../shared)
 
+#opencv
+find_package(OpenCV REQUIRED java)
+target_link_libraries(appmodules ${OpenCV_LIBRARIES})
+
 

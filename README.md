@@ -8,3 +8,16 @@ https://reactnative.dev/docs/next/the-new-architecture/pure-cxx-modules
 - Import sdk folder into the android folder
 - android/settings.gradle -> add ->  include ':opencv'
 
+# CMakeLists
+Add following into CMakeLists
+
+find_package(OpenCV REQUIRED java)
+target_link_libraries(appmodules ${OpenCV_LIBRARIES}) # appmodules name of the app cmake
+
+# app/build.gradle
+externalNativeBuild {
+    cmake {
+        cppFlags "-std=c++11 -frtti -fexceptions"
+        arguments "-DOpenCV_DIR=" + "<path to downloaded opencv sdk>" + "/sdk/native/jni" // , "-DANDROID_ARM_NEON=TRUE"
+    }
+}

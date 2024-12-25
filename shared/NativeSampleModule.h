@@ -4,6 +4,7 @@
 
 #include <memory>
 #include <string>
+#include <opencv2/opencv.hpp>
 
 namespace facebook::react {
 
