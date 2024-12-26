@@ -1,30 +1,39 @@
 #include "NativeSampleModule.h"
+#include <camera/NdkCameraManager.h>
 
 namespace facebook::react {
-  NativeSampleModule::NativeSampleModule(std::shared_ptr<CallInvoker> jsInvoker)
-  : NativeSampleModuleCxxSpec(std::move(jsInvoker)) {}
+NativeSampleModule::NativeSampleModule(std::shared_ptr<CallInvoker> jsInvoker)
+: NativeSampleModuleCxxSpec(std::move(jsInvoker)) {}
 
-  std::string NativeSampleModule::reverseString(jsi::Runtime& rt, std::string input) {
-    return std::string(input.rbegin(), input.rend());
+std::string NativeSampleModule::reverseString(jsi::Runtime& rt, std::string input) {
+  return std::string(input.rbegin(), input.rend());
+}
+
+void NativeSampleModule::camera(jsi::Runtime& rt) {
+  ACameraManager *cameraManager = ACameraManager_create();
+  camera_status_t camera_status = ACAMERA_OK;
+  ACameraIdList *cameraIdList = nullptr;
+  ACameraDevice *cameraDevice = nullptr;
+
+  camera_status = ACameraManager_getCameraIdList(cameraManager, &cameraIdList);
+
+  if (camera_status != ACAMERA_OK) {
+    LOGE("Failed to get camera id list (reason: %d)\n", camera_status);
+    return;
   }
 
-  void NativeSampleModule::camera(jsi::Runtime& rt) {
-    LOGD("Attempting to open the camera...");
+  // camera_status = ACameraManager_openCamera(cameraManager, cameraIdList->cameraIds[0],
+  //                                           &deviceStateCallbacks, &cameraDevice);
 
-    cv::VideoCapture cap(0, cv::CAP_ANDROID);
+  // Open the first available camera
+  const char* cameraId = cameraIdList->cameraIds[0];
 
-    if (!cap.isOpened()) {
-      LOGE("Error: Unable to open the camera");
-      return;
-    }
+  // LOGD("cameraID " << *cameraId);
 
-    LOGD("Camera opened successfully");
+  ACameraManager_openCamera(cameraManager, cameraId, nullptr, &cameraDevice);
 
-    double frameWidth = cap.get(cv::CAP_PROP_FRAME_WIDTH);
-    double frameHeight = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
-    LOGD("Camera resolution: %.0fx%.0f", frameWidth, frameHeight);
+  // LOGD("Attempting to open the camera...");
 
-    cap.release();
-    LOGD("Camera released");
-  }
+  LOGD("Camera released");
+}
 }

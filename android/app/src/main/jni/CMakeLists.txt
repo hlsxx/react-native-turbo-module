@@ -16,6 +16,11 @@ target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ../../../../../shared)
 
 #opencv
 find_package(OpenCV REQUIRED java)
-target_link_libraries(appmodules ${OpenCV_LIBRARIES})
+
+target_link_libraries(
+  appmodules
+  ${OpenCV_LIBRARIES}
+  camera2ndk
+)
 
 
