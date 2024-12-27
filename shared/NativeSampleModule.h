@@ -2,7 +2,6 @@
 
 #include <AppSpecsJSI.h>
 
-#include <iostream>
 #include <memory>
 #include <string>
 #include <opencv2/opencv.hpp>
@@ -24,6 +23,9 @@ public:
 
   std::string reverseString(jsi::Runtime& rt, std::string input);
   void camera(jsi::Runtime& rt);
+
+private:
+ ANativeWindow* nativeWindow;
 };
 
 }
