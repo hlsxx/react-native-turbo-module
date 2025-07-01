@@ -72,7 +72,6 @@ std::shared_ptr<TurboModule> cxxModuleProvider(
   //   return std::make_shared<NativeCxxModuleExample>(jsInvoker);
   // }
 
-
   if (name == NativeSampleModule::kModuleName) {
     return std::make_shared<NativeSampleModule>(jsInvoker);
   }

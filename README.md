@@ -1,26 +1,17 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React-native native module
 
-https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here
-https://reactnative.dev/docs/next/the-new-architecture/pure-cxx-modules
+## Tutorial
 
-# OpenCV
-- Download OpenCV sdk
-- Import sdk folder into the android folder
-- android/settings.gradle -> add ->  include ':opencv'
+Link: 
+```
+https://reactnative.dev/docs/the-new-architecture/pure-cxx-modules
+```
 
-# CMakeLists
-Add following into CMakeLists
+1. Create a new React-native project
 
-find_package(OpenCV REQUIRED java)
-target_link_libraries(appmodules ${OpenCV_LIBRARIES}) # appmodules name of the app cmake
+```
+npx @react-native-community/cli@latest init SampleApp --version 0.80.0
 
-# app/build.gradle
-externalNativeBuild {
-    cmake {
-        cppFlags "-std=c++11 -frtti -fexceptions"
-        arguments "-DOpenCV_DIR=" + "<path to downloaded opencv sdk>" + "/sdk/native/jni" // , "-DANDROID_ARM_NEON=TRUE"
-    }
-}
+```
 
-# Hints
-adb logcat | grep ReactNative (catch error from cpp logs)
+2. 
