@@ -82,3 +82,7 @@ std::string NativeSampleModule::reverseString(jsi::Runtime& rt, std::string inpu
 
 } // namespace facebook::react
 ```
+
+4. Move compile_commands.json
+
+Move from `androind/.cxx/tools/debug` into root folder as `compile_commans.json`
